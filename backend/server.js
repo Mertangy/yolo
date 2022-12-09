@@ -8,17 +8,20 @@ const upload = multer();
 const productRoute = require('./routes/api/productRoute');
 
 // Connecting to the Database
-let mongodb_url = 'mongodb://localhost/';
+let mongodb_url = 'mongodb://localhost:27017/';
 let dbName = 'yolomy';
 
 // define a url to connect to the database
+//process.env.MONGODB_URI
 const MONGODB_URI = process.env.MONGODB_URI || mongodb_url + dbName
-mongoose.connect(MONGODB_URI,{useNewUrlParser: true, useUnifiedTopology: true  } )
+
+mongoose.connect(MONGODB_URI,{ useNewUrlParser: true, useUnifiedTopology: true  } )
 let db = mongoose.connection;
 
 // Check Connection
 db.once('open', ()=>{
     console.log('Database connected successfully')
+    console.log(MONGODB_URI)
 })
 
 // Check for DB Errors
@@ -46,4 +49,5 @@ const PORT = process.env.PORT || 5000
 
 app.listen(PORT, ()=>{
     console.log(`Server listening on port ${PORT}`)
+    console.log(MONGODB_URI)
 })

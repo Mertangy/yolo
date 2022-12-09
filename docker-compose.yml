@@ -1,0 +1,13 @@
+services:
+  app:
+    image: node:18-alpine
+    command: sh -c "npm install && npm start"
+    ports:
+      - 3000:3000
+    working_dir: /yolo
+    volumes:
+      -  ./:/yolo
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME=admin
+      MONGO_INITDB_ROOT_PASSWORD=password
