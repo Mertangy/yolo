@@ -1,15 +1,13 @@
-FROM node:12
+FROM node:alpine
 
 WORKDIR /backend
 
-COPY package*.json ./
+COPY package*.json .
 
-RUN npm install
+RUN npm ci
 
 COPY . . 
 
-ENV port=3000
+EXPOSE 5000
 
-EXPOSE 3000
-
-CMD["npm","start"]
+CMD ["npm","start"]

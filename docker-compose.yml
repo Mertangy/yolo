@@ -1,13 +1,30 @@
+version: '3.9'
 services:
-  app:
-    image: node:18-alpine
-    command: sh -c "npm install && npm start"
+  client:
+    build: ./client
     ports:
-      - 3000:3000
-    working_dir: /yolo
-    volumes:
-      -  ./:/yolo
-
+      - '3001:3000'
+    working_dir: /client
+  
+  backend:
+    build: ./backend
+    ports:
+    - '5001:5000'
+    depends_on:
+      - mongo
+  
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 2717:27017
     environment:
-      MONGO_INITDB_ROOT_USERNAME=admin
-      MONGO_INITDB_ROOT_PASSWORD=password
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+    volumes:
+      - mongodb-data:/data/db
+
+    
+volumes:
+  mongodb-data: {}
