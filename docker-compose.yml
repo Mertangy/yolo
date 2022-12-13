@@ -23,7 +23,7 @@ services:
   
   #The backend servive
   backend:
-    image: yolo_backend:v1.0.0.0
+    image: yolo_backend:v1.0.0
     container_name: node_backend_service
   
     build: 
@@ -36,7 +36,7 @@ services:
   
   #The frontend service
   client:
-    image: yolo_frontend:v1.0.0.0
+    image: yolo_frontend:v1.0.0
     container_name: react_frontend_service
     build: 
       context: ./client
