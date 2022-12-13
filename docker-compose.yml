@@ -6,6 +6,7 @@ services:
 
     #Using the latest mongo image
     image: mongo
+    container_name: mongo_database
     #Restart in case of any failures
     restart: always
     ports:
@@ -22,7 +23,12 @@ services:
   
   #The backend servive
   backend:
-    build: ./backend
+    image: yolo_backend:v1.0.0.0
+    container_name: node_backend_service
+  
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
     - "5000:5000"
     depends_on:
@@ -30,7 +36,11 @@ services:
   
   #The frontend service
   client:
-    build: ./client
+    image: yolo_frontend:v1.0.0.0
+    container_name: react_frontend_service
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
 

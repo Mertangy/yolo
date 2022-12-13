@@ -1,4 +1,6 @@
-FROM node:alpine
+FROM alpine
+
+RUN apk add --update nodejs npm
 
 WORKDIR /client
 
