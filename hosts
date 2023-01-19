@@ -5,3 +5,5 @@ nodejs-backend
 
 [db]
 mongo-db
+
+[all:vars]
