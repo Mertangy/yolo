@@ -1,0 +1,7 @@
+[app servers]
+front-end
+nodejs-backend
+
+
+[db]
+mongo-db
