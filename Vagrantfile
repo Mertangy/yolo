@@ -30,4 +30,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
      db.vm.hostname = "mongo-db"
     db.vm.network :private_network, ip: "192.168.60.5"
   end
+
+  # Ansible provisioner.
+  config.vm.provision :ansible do |ansible|
+    ansible.playbook = "playbook.yml"
+  end
 end
