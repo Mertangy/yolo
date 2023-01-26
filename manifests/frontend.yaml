@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yolo-frontend
+  labels:
+    app: yolo-ui
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: yolo-ui
+    spec:
+      containers:
+        - name: yolo-ui
+          image: mertangy/yolo_frontend:v1.0.0
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+          - name: yolo-pv
+            mountPath: /var/www/html
+      volumes:
+      - name: yolo-pv
+        persistentVolumeClaim:
+          claimName: yolo-pvc   
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: yolo-front-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: yolo-ui
+  ports:
+    - port: 3000
+      targetPort: 8080
+      protocol: TCP
+      name: http
