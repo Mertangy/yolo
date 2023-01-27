@@ -32,6 +32,8 @@ Make sure that you have the following installed:
 
  ### cd to the project that you cloned.
 
- ### To create or update the resources defined in yaml files : kubectl apply -f frontend.yaml and kubectl apply -f backend.yaml
+ ### To create or update the resources defined in yaml files : 
+ - kubectl apply -f frontend.yaml.
+ - kubectl apply -f backend.yaml.
 
  ### Visit the url generated to visit the application.
