@@ -37,3 +37,4 @@ Make sure that you have the following installed:
  - kubectl apply -f backend.yaml.
 
  ### Visit the url generated to visit the application.
+ - 	104.155.42.104:80 	
